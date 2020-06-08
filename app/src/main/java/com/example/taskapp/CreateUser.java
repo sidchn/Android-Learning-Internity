@@ -1,5 +1,6 @@
 package com.example.taskapp;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.util.Log;
@@ -13,6 +14,9 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.room.Room;
+
+import com.example.taskapp.childfragments.ChatsFragment;
 
 
 public class CreateUser extends AppCompatActivity {
@@ -29,11 +33,24 @@ public class CreateUser extends AppCompatActivity {
         etLastName=findViewById(R.id.etLastName);
         etEmail=findViewById(R.id.etEmail);
         btnSaveUser=findViewById(R.id.btnSaveUser);
+
+        final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,
+                "production")
+                .allowMainThreadQueries()
+                .build();
+
         btnSaveUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 // TODO: 6/8/20 Save to Database 
-                Log.d(TAG, "onClick: firstname " + etFirstName.getText().toString());
+//                Log.d(TAG, "onClick: firstname " + etFirstName.getText().toString());
+
+                String sFname=etFirstName.getText().toString();
+                String sLname=etLastName.getText().toString();
+                String sEmail=etEmail.getText().toString();
+                db.userDao().insertAll(new User(sFname, sLname, sEmail));
+
+                startActivity(new Intent(CreateUser.this, DashboardActivity.class));
                 
             }
         });

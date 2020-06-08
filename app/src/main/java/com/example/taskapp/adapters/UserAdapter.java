@@ -12,12 +12,13 @@ import com.example.taskapp.R;
 import com.example.taskapp.User;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
-    ArrayList<User> users;
+    List<User> users;
 
-    public UserAdapter(ArrayList<User> users) {
+    public UserAdapter(List<User> users) {
         this.users = users;
     }
 

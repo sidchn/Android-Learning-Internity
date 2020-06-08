@@ -1,5 +1,6 @@
 package com.example.taskapp;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -13,8 +14,14 @@ public class User {
 
     @PrimaryKey(autoGenerate = true)
     private int id;
+
+    @ColumnInfo(name="first_name")
     private String fname;
+
+    @ColumnInfo(name="last_name")
     private String lname;
+
+    @ColumnInfo(name="email")
     private String email;
 
     public int getId() {
