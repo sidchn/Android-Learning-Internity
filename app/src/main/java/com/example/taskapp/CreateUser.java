@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.room.Room;
 
 import com.example.taskapp.childfragments.ChatsFragment;
+
+import java.util.regex.Pattern;
 
 
 public class CreateUser extends AppCompatActivity {
@@ -48,11 +51,35 @@ public class CreateUser extends AppCompatActivity {
                 String sFname=etFirstName.getText().toString();
                 String sLname=etLastName.getText().toString();
                 String sEmail=etEmail.getText().toString();
-                db.userDao().insertAll(new User(sFname, sLname, sEmail));
+                if(sFname.isEmpty()==false && sLname.isEmpty()==false && sEmail.isEmpty()==false) {
 
-                startActivity(new Intent(CreateUser.this, DashboardActivity.class));
-                
+
+                    if (isValid(sEmail)) {
+
+
+                        db.userDao().insertAll(new User(sFname, sLname, sEmail));
+
+                        startActivity(new Intent(CreateUser.this, DashboardActivity.class));
+                    } else {
+                        Toast.makeText(CreateUser.this, "Invalid Email address", Toast.LENGTH_LONG).show();
+                    }
+                }
+                else{
+                    Toast.makeText(CreateUser.this, "Please fill all the fields", Toast.LENGTH_LONG).show();
+                }
             }
         });
+    }
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 }

@@ -10,7 +10,7 @@
 <TextView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:text="Click on the button to add Contacts."
+    android:text="Your Contacts"
     android:gravity="center"
     android:textSize="30sp"
     android:textColor="@android:color/white"
