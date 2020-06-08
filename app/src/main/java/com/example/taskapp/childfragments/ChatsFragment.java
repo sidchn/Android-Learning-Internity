@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.UserHandle;
@@ -14,14 +15,20 @@ import android.view.ViewGroup;
 
 import com.example.taskapp.CreateUser;
 import com.example.taskapp.R;
+import com.example.taskapp.User;
+import com.example.taskapp.adapters.UserAdapter;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.ArrayList;
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class ChatsFragment extends Fragment {
     RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
     FloatingActionButton fab;
+    ArrayList<User> users;
 
     public ChatsFragment() {
         // Required empty public constructor
@@ -33,6 +40,22 @@ public class ChatsFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.fragment_chats, container, false);
+
+        recyclerView=v.findViewById(R.id.recyclerView);
+
+        users = new ArrayList<>();
+        for (int i = 0; i <15; ++i){
+            User user = new User("Sid " + i, "Chouhan", "sidchn@gmail.com");
+            users.add(user);
+        }
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+
+        recyclerView.setLayoutManager(layoutManager);
+        adapter = new UserAdapter(users);
+        recyclerView.setAdapter(adapter);
+
+
 
         fab = v.findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
