@@ -11,9 +11,11 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.regex.Pattern;
+
 public class Signup extends AppCompatActivity {
     Button mSignupbtn;
-    TextView mloginbtn;
+    Button btnlog;
 
     SharedPreferences preferences;
     @Override
@@ -24,7 +26,7 @@ public class Signup extends AppCompatActivity {
 
         final EditText mPassword=(EditText)findViewById(R.id.Third);
         mSignupbtn=(Button)findViewById(R.id.button2);
-        mloginbtn=(TextView)findViewById(R.id.textView7);
+        btnlog=findViewById(R.id.btnlog);
 
         preferences=getSharedPreferences("MYSHAREDPREF",0);
 
@@ -33,21 +35,46 @@ public class Signup extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String nemail=mEmail.getText().toString();
-                String npassword=mPassword.getText().toString();
-                String nphone=mPhone.getText().toString();
+                String nemail = mEmail.getText().toString();
+                String npassword = mPassword.getText().toString();
+                String nphone = mPhone.getText().toString();
 
-                SharedPreferences.Editor editor=preferences.edit();
-                editor.putString("email",nemail);
-                editor.putString("password",npassword);
-                editor.putString("phone",nphone);
-                editor.apply();
-                Toast.makeText(Signup.this ,"User Registered", Toast.LENGTH_SHORT).show();
-                editor.commit();
-                startActivity(new Intent(Signup.this,Login.class));
-
+                if (isValid(nemail)==false) {
+                    Toast.makeText(Signup.this, "Invalid Email address", Toast.LENGTH_LONG).show();
+                }
+                else {
+                    SharedPreferences.Editor editor = preferences.edit();
+                    editor.putString("email", nemail);
+                    editor.putString("password", npassword);
+                    editor.putString("phone", nphone);
+                    editor.apply();
+                    Toast.makeText(Signup.this, "User Registered", Toast.LENGTH_SHORT).show();
+                    editor.commit();
+                    startActivity(new Intent(Signup.this, Login.class));
+                }
             }
         });
+
+        btnlog.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(Signup.this,Login.class));
+            }
+        });
+
+    }
+
+    public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                "[a-zA-Z0-9_+&*-]+)*@" +
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                "A-Z]{2,7}$";
+
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
     }
 
 

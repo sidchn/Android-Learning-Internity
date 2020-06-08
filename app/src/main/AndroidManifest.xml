@@ -21,6 +21,8 @@
         <activity
             android:name=".DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".CreateUser"
+            />
     </application>
 
 </manifest>

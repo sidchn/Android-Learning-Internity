@@ -65,18 +65,16 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="35dp"
-            android:text="If you have already registered/"/>
+            android:text="If you have already registered" />
 
     </LinearLayout>
 
-    <TextView
-        android:id="@+id/textView7"
+    <Button
+        android:id="@+id/btnlog"
         android:layout_width="wrap_content"
-        android:layout_height="35dp"
-        android:paddingLeft="10dp"
-        android:text="Login Here"
-        android:textSize="16sp"
-        android:textStyle="bold" />
+        android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:text="Login Here" />
 
 
 </LinearLayout>
