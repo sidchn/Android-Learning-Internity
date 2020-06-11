@@ -42,6 +42,9 @@ public class Signup extends AppCompatActivity {
                 if (isValid(nemail)==false) {
                     Toast.makeText(Signup.this, "Invalid Email address", Toast.LENGTH_LONG).show();
                 }
+                if(mPhone.length()!=10){
+                    Toast.makeText(Signup.this, "Please enter only 10 digit Phone Number", Toast.LENGTH_LONG).show();
+                }
                 else {
                     SharedPreferences.Editor editor = preferences.edit();
                     editor.putString("email", nemail);
