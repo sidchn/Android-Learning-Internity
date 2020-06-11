@@ -24,6 +24,7 @@ public class TabAdapter extends FragmentPagerAdapter {
         {
             case 0:
                 return new ChatsFragment();
+
             case 1:
                 return new StatusFragment();
             case 2:

@@ -28,24 +28,35 @@ public class CreateUser extends AppCompatActivity {
     EditText etLastName;
     EditText etEmail;
     Button btnSaveUser;
+    Button btnCancel;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.create_user);
+        this.setFinishOnTouchOutside(false);
         etFirstName=findViewById(R.id.etFirstName);
         etLastName=findViewById(R.id.etLastName);
         etEmail=findViewById(R.id.etEmail);
         btnSaveUser=findViewById(R.id.btnSaveUser);
+        btnCancel=findViewById(R.id.btnCancel);
 
         final AppDatabase db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class,
                 "production")
                 .allowMainThreadQueries()
                 .build();
 
+        btnCancel.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                finish();
+            }
+        });
+
+
         btnSaveUser.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // TODO: 6/8/20 Save to Database 
+                // TODO: 6/8/20 Save to Database
 //                Log.d(TAG, "onClick: firstname " + etFirstName.getText().toString());
 
                 String sFname=etFirstName.getText().toString();

@@ -2,6 +2,7 @@ package com.example.taskapp;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
@@ -9,7 +10,12 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -73,5 +79,55 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
                 break;
         }
         return true;
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.logout_menu, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.logout){
+//            finish();
+//            startActivity(new Intent(DashboardActivity.this, Login.class));
+            alert();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void alert() {
+
+        AlertDialog.Builder abuilder=new AlertDialog.Builder(DashboardActivity.this);
+        //Setting message manually and performing action on button click
+        abuilder.setMessage("Are you sure you want to Logout ?")
+                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+//                        SharedPreferences preferences=getSharedPreferences("MYSHAREDPREF",0);
+//                        SharedPreferences.Editor editor = preferences.edit();
+//                        editor.clear();
+//                        editor.apply();
+                        finish();
+                        startActivity(new Intent(DashboardActivity.this,Login.class));
+
+                    }
+                })
+                .setNegativeButton("No", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int id) {
+
+                        dialog.cancel();
+//                        Toast.makeText(getApplicationContext(),"pressed no",
+//                                Toast.LENGTH_SHORT).show();
+                    }
+                });
+
+        //Creating dialog box
+        AlertDialog alert = abuilder.create();
+        //Setting the title manually
+        alert.setTitle("Log Out");
+        alert.show();
     }
 }

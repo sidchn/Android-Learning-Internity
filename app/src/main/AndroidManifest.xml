@@ -11,7 +11,8 @@
         android:theme="@style/AppTheme">
         <activity android:name=".Signup"></activity>
         <activity android:name=".Login" />
-                <activity android:name=".SplashActivity">
+                <activity android:name=".SplashActivity"
+                    android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,6 +23,8 @@
             android:name=".DashboardActivity"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".CreateUser"
+            android:theme="@style/Theme.AppCompat.Dialog"
+            android:excludeFromRecents="true"
             />
     </application>
 

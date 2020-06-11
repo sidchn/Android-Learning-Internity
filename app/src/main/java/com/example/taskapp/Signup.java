@@ -50,6 +50,7 @@ public class Signup extends AppCompatActivity {
                     editor.apply();
                     Toast.makeText(Signup.this, "User Registered", Toast.LENGTH_SHORT).show();
                     editor.commit();
+                    finish();
                     startActivity(new Intent(Signup.this, Login.class));
                 }
             }
@@ -58,6 +59,7 @@ public class Signup extends AppCompatActivity {
         btnlog.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(Signup.this,Login.class));
             }
         });

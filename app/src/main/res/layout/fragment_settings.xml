@@ -17,7 +17,7 @@
         android:layout_gravity="top|center"
         android:layout_marginTop="24dp"
         android:gravity="center"
-        android:text="Settings Page"
+        android:text=""
         android:textSize="30sp"
         app:layout_constraintBottom_toTopOf="@+id/imageView2"
         app:layout_constraintEnd_toEndOf="parent"

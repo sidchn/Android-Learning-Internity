@@ -35,9 +35,11 @@ public class Login extends AppCompatActivity {
                 String uemail=preferences.getString("email","");
                 String upass=preferences.getString("password","");
 
+
                 if(email.equals(uemail)&& password.equals(upass))
                 {
                     Intent intent=new Intent(Login.this,DashboardActivity.class);
+                    finish();
                     startActivity(intent);
                 }else
                 {
@@ -48,6 +50,7 @@ public class Login extends AppCompatActivity {
         mcreatebtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                finish();
                 startActivity(new Intent(Login.this,Signup.class));
             }
         });
