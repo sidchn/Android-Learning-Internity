@@ -84,8 +84,11 @@ public class ChatsFragment extends Fragment {
             public void onClick(View v) {
 //                customAlertDialog();
 
+
                 Intent intent = new Intent(getActivity(), CreateUser.class);
+
                 startActivity(intent);
+
 
             }
         });
@@ -134,5 +137,8 @@ public class ChatsFragment extends Fragment {
 //            }
 //        });
 //    }
+
+
+
 }
 

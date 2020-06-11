@@ -130,4 +130,14 @@ public class DashboardActivity extends AppCompatActivity implements NavigationVi
         alert.setTitle("Log Out");
         alert.show();
     }
+
+    @Override
+    public void onBackPressed()
+    {
+        this.finish();
+//        Intent int1= new Intent(this, DashboardActivity.class);
+//        int1.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+//        startActivity(int1);
+        super.onBackPressed();
+    }
 }

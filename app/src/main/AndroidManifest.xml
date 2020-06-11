@@ -21,10 +21,12 @@
         </activity>
         <activity
             android:name=".DashboardActivity"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:theme="@style/AppTheme.NoActionBar"
+            android:noHistory="true"/>
         <activity android:name=".CreateUser"
             android:theme="@style/Theme.AppCompat.Dialog"
             android:excludeFromRecents="true"
+            android:noHistory="true"
             />
     </application>
 

@@ -93,4 +93,9 @@ public class CreateUser extends AppCompatActivity {
             return false;
         return pat.matcher(email).matches();
     }
+
+    @Override
+    public void onBackPressed() {
+        finish();
+    }
 }
