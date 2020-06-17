@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,11 +8,28 @@
 
     <!-- TODO: Update blank fragment layout -->
     <TextView
+        android:id="@+id/tvResponse"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Status Fragment"
-        android:textSize="30sp"
+        android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:gravity="center"/>
+        android:layout_marginTop="80dp"
+        android:gravity="center"
+        android:text="Response"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
-</FrameLayout>
+    <Button
+        android:id="@+id/btnRequest"
+        android:layout_width="168dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="120dp"
+        android:text="GET Response"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvResponse" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
